@@ -60,6 +60,7 @@ impl VRMethods for VR {
     #[allow(unrooted_must_root)]
     // https://w3c.github.io/webvr/#interface-navigator
     fn GetDisplays(&self) -> Rc<Promise> {
+        println!("GetDisplays begin");
         let promise = Promise::new(&self.global());
 
         if let Some(webvr_thread) = self.webvr_thread() {
@@ -88,7 +89,7 @@ impl VRMethods for VR {
                                                           .map(|d| Root::from_ref(&**d))
                                                           .collect();
         promise.resolve_native(promise.global().get_cx(), &displays);
-
+        println!("GetDisplays end");
         promise
     }
 }
