@@ -454,7 +454,8 @@ pub fn build_mozbrowser_custom_event(window: &Window, event: MozBrowserEvent) ->
     CustomEvent::new(window.upcast(),
                      event_name,
                      true,
-                     true)
+                     true,
+                     detail.handle())
 }
 
 #[allow(unsafe_code)]

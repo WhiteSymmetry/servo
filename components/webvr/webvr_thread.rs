@@ -78,7 +78,6 @@ impl WebVRThread {
     }
 
     fn start(&mut self) {
-        self.service.register_mock();
         while let Ok(msg) = self.receiver.recv() {
             match msg {
                 WebVRMsg::RegisterContext(context) => {

@@ -18,9 +18,9 @@
 interface CustomEvent : Event {
   readonly attribute any detail;
 
-  void initCustomEvent(DOMString type, boolean bubbles, boolean cancelable);
+  void initCustomEvent(DOMString type, boolean bubbles, boolean cancelable, any detail);
 };
 
 dictionary CustomEventInit : EventInit {
-  //any detail = null;
+  any detail = null;
 };

@@ -399,17 +399,26 @@ impl VRDisplay {
     }
 
     pub fn update_display(&self, display: &WebVRDisplayData) {
+        println!("update1");
         *self.display.borrow_mut() = display.clone();
+        println!("update2");
         if let Some(ref stage) = display.stage_parameters {
+            println!("update_stage1");
             if self.stage_params.get().is_none() {
+                println!("update_stage2");
                 let params = Some(VRStageParameters::new(stage.clone(), &self.global()));
+                println!("update_stage3");
                 self.stage_params.set(params.as_ref().map(|v| v.deref()));
+                println!("update_stage4");
             } else {
                 self.stage_params.get().unwrap().update(&stage);
+                println!("update_stage5");
             }
         } else {
+            println!("update6");
             self.stage_params.set(None);
         }
+        println!("update4");
     }
 
     pub fn handle_webvr_event(&self, event: &WebVRDisplayEvent) {
