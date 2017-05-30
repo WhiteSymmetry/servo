@@ -22,12 +22,36 @@ _ANDROID_NDK="android-ndk-r9"
 # list in $ANDROID_NDK_ROOT/toolchains. This value is always used.
 # _ANDROID_EABI="x86-4.6"
 # _ANDROID_EABI="arm-linux-androideabi-4.6"
-_ANDROID_EABI="arm-linux-androideabi-4.9"
 
 # Set _ANDROID_ARCH to the architecture you are building for.
 # This value is always used.
 # _ANDROID_ARCH=arch-x86
-_ANDROID_ARCH=arch-arm
+
+
+case $RUST_TARGET in
+    armv7*)
+      _ANDROID_TARGET="arm-linux-androideabi"
+      _ANDROID_ARCH=arch-arm
+      ;;
+    arm*)
+      _ANDROID_TARGET=$RUST_TARGET
+      _ANDROID_ARCH=arch-arm
+      ;;
+    aarch64*)
+      _ANDROID_TARGET=$RUST_TARGET
+      _ANDROID_ARCH=arch-arm64
+      ;;
+    x86*)
+      _ANDROID_TARGET=$RUST_TARGET
+      _ANDROID_ARCH=arch-x86
+      ;;
+    *)
+      echo "Error: Invalid TARGET platform: $RUST_TARGET"
+      ;;
+esac
+
+_ANDROID_EABI="$_ANDROID_TARGET-4.9"
+
 
 # Set _ANDROID_API to the API you want to use. You should set it
 # to one of: android-14, android-9, android-8, android-14, android-5
@@ -93,17 +117,7 @@ if [ -z "$ANDROID_TOOLCHAIN" ] || [ ! -d "$ANDROID_TOOLCHAIN" ]; then
   # exit 1
 fi
 
-case $_ANDROID_ARCH in
-    arch-arm)
-      ANDROID_TOOLS="arm-linux-androideabi-gcc arm-linux-androideabi-ranlib arm-linux-androideabi-ld"
-      ;;
-    arch-x86)
-      ANDROID_TOOLS="i686-linux-android-gcc i686-linux-android-ranlib i686-linux-android-ld"
-      ;;
-    *)
-      echo "ERROR ERROR ERROR"
-      ;;
-esac
+ANDROID_TOOLS="$_ANDROID_TARGET-gcc $_ANDROID_TARGET-ranlib $_ANDROID_TARGET-ld"
 
 for tool in $ANDROID_TOOLS
 do
@@ -141,11 +155,11 @@ fi
 #####################################################################
 
 # Most of these should be OK (MACHINE, SYSTEM, ARCH). RELEASE is ignored.
-export MACHINE=armv7
+export MACHINE="android"
 export RELEASE=2.6.37
 export SYSTEM=android
 export ARCH=arm
-export CROSS_COMPILE="arm-linux-androideabi-"
+export CROSS_COMPILE="$_ANDROID_TARGET-"
 
 if [ "$_ANDROID_ARCH" == "arch-x86" ]; then
     export MACHINE=i686
