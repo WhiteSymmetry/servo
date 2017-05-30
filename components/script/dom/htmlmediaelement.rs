@@ -502,6 +502,7 @@ impl HTMLMediaElement {
     // https://html.spec.whatwg.org/multipage/#concept-media-load-resource
     fn resource_fetch_algorithm(&self, resource: Resource) {
         // TODO step 3 (remove text tracks)
+        return;
 
         // Step 4
         if let Resource::Url(url) = resource {
@@ -530,6 +531,7 @@ impl HTMLMediaElement {
             };
 
             ROUTER.add_route(action_receiver.to_opaque(), box move |message| {
+                println!("Media");
                 listener.notify_fetch(message.to().unwrap());
             });
 

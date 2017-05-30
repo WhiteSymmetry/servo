@@ -158,7 +158,13 @@ impl FontContext {
             }
 
             if !cache_hit {
-                let template_info = self.font_cache_thread.find_font_template(family.clone(),
+
+                self.layout_font_cache.push(LayoutFontCacheEntry {
+                        family: family.name().to_owned(),
+                        font: None,
+                });
+
+                /*let template_info = self.font_cache_thread.find_font_template(family.clone(),
                                                                              desc.clone());
                 match template_info {
                     Some(template_info) => {
@@ -189,7 +195,7 @@ impl FontContext {
                             font: None,
                         });
                     }
-                }
+                }*/
             }
         }
 
@@ -207,7 +213,7 @@ impl FontContext {
         }
 
         if !cache_hit {
-            let template_info = self.font_cache_thread.last_resort_font_template(desc.clone());
+            /*let template_info = self.font_cache_thread.last_resort_font_template(desc.clone());
             let layout_font = self.create_layout_font(template_info.font_template,
                                                       desc.clone(),
                                                       style.font_size,
@@ -222,7 +228,7 @@ impl FontContext {
                     fonts.push(layout_font);
                 }
                 Err(_) => debug!("Failed to create fallback layout font!")
-            }
+            }*/
         }
 
         let font_group = Rc::new(FontGroup::new(fonts));

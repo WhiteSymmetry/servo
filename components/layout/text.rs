@@ -68,6 +68,9 @@ impl TextRunScanner {
                          font_context: &mut FontContext,
                          mut fragments: LinkedList<Fragment>)
                          -> InlineFragments {
+        return InlineFragments {
+            fragments: Vec::new(),
+        };
         debug!("TextRunScanner: scanning {} fragments for text runs...", fragments.len());
         debug_assert!(!fragments.is_empty());
 
