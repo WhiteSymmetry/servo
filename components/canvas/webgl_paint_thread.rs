@@ -142,14 +142,13 @@ impl WebGLPaintThread {
                 Ok((painter, limits))
             },
             Err(msg) => {
-                warn!("Initial context creation failed, falling back to readback: {}", msg);
+                panic!("Initial context creation failed, falling back to readback: {}", msg);
                 create_readback_painter(size, attrs, wr_api, gl_type)
             }
         }
     }
 
     fn handle_webgl_message(&self, message: webrender_traits::WebGLCommand) {
-        debug!("WebGL message: {:?}", message);
         match self.data {
             WebGLPaintTaskData::WebRender(ref api, id) => {
                 api.send_webgl_command(id, message);

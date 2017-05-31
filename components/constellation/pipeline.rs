@@ -274,6 +274,7 @@ impl Pipeline {
                 //
                 // Yes, that's all there is to it!
                 if opts::multiprocess() {
+                    panic!("Multiprocess enabled!!!");
                     let _ = try!(unprivileged_pipeline_content.spawn_multiprocess());
                 } else {
                     unprivileged_pipeline_content.start_all::<Message, LTF, STF>(false);

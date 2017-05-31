@@ -19,3 +19,8 @@ opt-level = 3
 # crate, add that here. Use the form:
 #
 #     "<crate>:<version>" = { path = "/path/to/local/checkout" }
+
+
+"https://github.com/servo/webrender#0.39.0" = { path = '/home/mortimer/Projects/c003d55/webrender' }
+"https://github.com/servo/webrender#webrender_traits:0.39.0" = { path = '/home/mortimer/Projects/c003d55/webrender_traits' }
+

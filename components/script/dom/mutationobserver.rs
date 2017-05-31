@@ -105,6 +105,7 @@ impl MutationObserver {
 
     /// https://dom.spec.whatwg.org/#queueing-a-mutation-record
     pub fn queue_a_mutation_record(target: &Node, attr_type: Mutation) {
+        return;
         // Step 1
         let mut interestedObservers: Vec<(Root<MutationObserver>, Option<DOMString>)> = vec![];
         // Step 2 & 3
