@@ -33,3 +33,5 @@ Servo.app
 .vscode
 
 /unminified-js
+
+support/android/googlevr/build

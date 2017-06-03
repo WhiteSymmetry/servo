@@ -218,8 +218,7 @@ String getServoLibsPath(boolean debug, String arch) {
 
 def getJniLibsPath(boolean debug, String arch) {
     return [
-            getServoLibsPath(debug, arch),
-            "../libs"
+            getServoLibsPath(debug, arch)
     ]
 }
 
