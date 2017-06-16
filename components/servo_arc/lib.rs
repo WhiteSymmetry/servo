@@ -527,10 +527,10 @@ impl<H, T> Arc<HeaderSlice<H, [T]>> {
             //
             // To avoid alignment issues, we allocate words rather than bytes,
             // rounding up to the nearest word size.
-            assert!(mem::align_of::<T>() <= mem::align_of::<usize>(),
-                    "We don't handle over-aligned types");
-            let words_to_allocate = divide_rounding_up(size, size_of::<usize>());
-            let mut vec = Vec::<usize>::with_capacity(words_to_allocate);
+            //assert!(mem::align_of::<T>() <= mem::align_of::<usize>(),
+            //        "We don't handle over-aligned types");
+            let words_to_allocate = divide_rounding_up(size, size_of::<u64>()); 
+            let mut vec = Vec::<u64>::with_capacity(words_to_allocate);
             vec.set_len(words_to_allocate);
             let buffer = Box::into_raw(vec.into_boxed_slice()) as *mut usize as *mut u8;
 

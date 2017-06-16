@@ -7,7 +7,7 @@ import java.util.regex.Pattern
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
         applicationId "com.mozilla.servo"
@@ -71,6 +71,7 @@ android {
         }
 
         release {
+            debuggable true
             signingConfig signingConfigs.debug // Change this to sign with a production key
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
