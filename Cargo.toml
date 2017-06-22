@@ -19,3 +19,7 @@ opt-level = 3
 # crate, add that here. Use the form:
 #
 #     "<crate>:<version>" = { path = "/path/to/local/checkout" }
+"rust-webvr:0.4.0" = { path = "/home/mortimer/Projects/rust-webvr" }
+"https://github.com/servo/webrender#0.39.0" = { path = '/home/mortimer/Projects/servo/c003d55/webrender' }
+"https://github.com/servo/webrender#webrender_traits:0.39.0" = { path = '/home/mortimer/Projects/servo/c003d55/webrender_traits' }
+"offscreen_gl_context:0.8.9" = { path = "/home/mortimer/Projects/servo/offscreen" }

@@ -1,0 +1,26 @@
+---
+root:
+  items:
+    - type: scroll-layer
+      bounds: [0, 0, 95, 88]
+      content-size: [95, 88]
+      clip:
+        image-mask:
+          image: "mask.png"
+          rect: [0, 0, 35, 35]
+          repeat: false
+        rect: [0, 0, 95, 88]
+      items:
+        - type: scroll-layer
+          bounds: [0, 0, 95, 88]
+          content-size: [95, 88]
+          clip:
+            image-mask:
+              image: "mask.png"
+              rect: [4, 4, 35, 35]
+              repeat: false
+            rect: [0, 0, 95, 88]
+          items:
+            - type: rect
+              bounds: [0, 0, 95, 88]
+              color: blue

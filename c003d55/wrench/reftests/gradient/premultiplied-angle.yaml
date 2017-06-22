@@ -1,0 +1,10 @@
+---
+root:
+  items:
+    - type: gradient
+      bounds: 50 50 200 200
+      # offset the start and end points slightly so
+      # we force the angle gradient shader
+      start: 0 100
+      end: 200 100.000001
+      stops: [0.0, red, 0.5, [0.0, 0.0, 0.0, 0.0], 1.0, green]

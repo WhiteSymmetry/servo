@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "webrender",
+    "webrender_traits",
+    "wrench",
+]
+
+[profile.release]
+debug = true

@@ -1,0 +1,14 @@
+---
+root:
+  items:
+    - type: scroll-layer
+      bounds: [9, 9, 95, 88]
+      clip: [0, 0, 10, 10]
+      items:
+        - type: scroll-layer
+          bounds: [0, 0, 95, 88]
+          clip: [0, 0, 100, 100]
+          items:
+            - type: rect
+              bounds: [0, 0, 100, 100]
+              color: blue

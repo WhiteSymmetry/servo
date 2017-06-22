@@ -1,0 +1,10 @@
+root:
+  items:
+    - type: scroll-layer
+      bounds: [0, 0, 1000, 1000]
+      clip: [0, 0, 100, 100]
+      scroll-offset: [50, 50]
+      items:
+        - type: rect
+          bounds: [50, 50, 50, 50]
+          color: green
